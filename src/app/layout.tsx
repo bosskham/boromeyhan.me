@@ -32,7 +32,10 @@ export const metadata: Metadata = {
     "ML",
   ],
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
   },
   openGraph: {
     title: "Boromey Han | Software Engineer",
