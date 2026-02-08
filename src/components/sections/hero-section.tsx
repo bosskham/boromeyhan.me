@@ -8,8 +8,23 @@ import { socialLinks } from "@/data/social-links";
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden py-20 sm:py-32">
+      {/* Tech grid background */}
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
+        {/* Grid pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.07]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
+        />
+        {/* Radial fade so grid doesn't reach edges */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,var(--background)_70%)]" />
+        {/* Primary glow - top center */}
+        <div className="absolute left-1/2 top-0 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-primary/15 blur-[120px]" />
+        {/* Secondary glow - bottom right */}
+        <div className="absolute bottom-0 right-0 h-[300px] w-[400px] rounded-full bg-primary/10 blur-[100px]" />
       </div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
