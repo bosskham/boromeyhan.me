@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Monitor, Globe, Brain } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -41,29 +42,40 @@ export function AboutSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
-          className="mx-auto max-w-3xl"
+          className="mx-auto max-w-4xl"
         >
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             About Me
           </h2>
-          <div className="mt-6 space-y-4 text-muted-foreground">
-            <p>
-              I&apos;m a software engineer who enjoys building tools that solve
-              real problems. My work spans desktop applications, web platforms,
-              and AI-powered tools — always focused on creating polished,
-              production-ready software.
-            </p>
-            <p>
-              My flagship project, <strong className="text-foreground">WTN Suite</strong>,
-              is an AI-powered desktop application that transforms webtoons and manga
-              into narrated video content. It combines panel detection, scene analysis,
-              text-to-speech, and video composition into a single automated pipeline.
-            </p>
-            <p>
-              I primarily work with Python for desktop and AI/ML development, and
-              TypeScript with Next.js for web applications. I&apos;m always
-              exploring new technologies to push the boundaries of what&apos;s possible.
-            </p>
+          <div className="mt-8 flex flex-col items-center gap-8 md:flex-row md:items-start">
+            <div className="shrink-0">
+              <Image
+                src="/images/profile.jpg"
+                alt="Boromey Han"
+                width={180}
+                height={180}
+                className="rounded-2xl border-2 border-primary/20 object-cover"
+              />
+            </div>
+            <div className="space-y-4 text-muted-foreground">
+              <p>
+                I&apos;m a software engineer who enjoys building tools that solve
+                real problems. My work spans desktop applications, web platforms,
+                and AI-powered tools — always focused on creating polished,
+                production-ready software.
+              </p>
+              <p>
+                My flagship project, <strong className="text-foreground">WTN Suite</strong>,
+                is an AI-powered desktop application that transforms webtoons and manga
+                into narrated video content. It combines panel detection, scene analysis,
+                text-to-speech, and video composition into a single automated pipeline.
+              </p>
+              <p>
+                I primarily work with Python for desktop and AI/ML development, and
+                TypeScript with Next.js for web applications. I&apos;m always
+                exploring new technologies to push the boundaries of what&apos;s possible.
+              </p>
+            </div>
           </div>
         </motion.div>
 
