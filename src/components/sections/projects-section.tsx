@@ -7,16 +7,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { projects, type Project } from "@/data/projects";
-
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { cardVariants, headingVariants, itemVariants } from "@/lib/animation-variants";
 
 function ProjectCard({ project }: { project: Project }) {
   const hasLinks = project.links.github || project.links.live || project.links.download;
@@ -87,50 +79,38 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="scroll-mt-20 py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+        <ScrollReveal className="mx-auto max-w-2xl text-center">
+          <motion.h2 variants={headingVariants} className="text-3xl font-bold tracking-tight sm:text-4xl">
             Projects
-          </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
+          </motion.h2>
+          <motion.p variants={itemVariants} className="mt-4 text-lg text-muted-foreground">
             A selection of projects I&apos;ve built — from full product
             ecosystems to focused developer tools.
-          </p>
-        </div>
+          </motion.p>
+        </ScrollReveal>
 
         <div className="mt-16">
           <h3 className="mb-6 text-xl font-semibold">Flagship</h3>
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
-          >
+          <ScrollReveal className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {flagship.map((project) => (
-              <motion.div key={project.title} variants={itemVariants}>
+              <motion.div key={project.title} variants={cardVariants} whileHover={{ y: -4, transition: { duration: 0.2 } }}>
                 <ProjectCard project={project} />
               </motion.div>
             ))}
-          </motion.div>
+          </ScrollReveal>
         </div>
 
         <Separator className="my-12" />
 
         <div>
           <h3 className="mb-6 text-xl font-semibold">Side Projects</h3>
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
-          >
+          <ScrollReveal className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {sideProjects.map((project) => (
-              <motion.div key={project.title} variants={itemVariants}>
+              <motion.div key={project.title} variants={cardVariants} whileHover={{ y: -4, transition: { duration: 0.2 } }}>
                 <ProjectCard project={project} />
               </motion.div>
             ))}
-          </motion.div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

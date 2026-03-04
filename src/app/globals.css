@@ -120,6 +120,19 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Smooth theme color transitions */
+*,
+*::before,
+*::after {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.15s ease;
+}
+
+/* Let Framer Motion handle transform/opacity without interference */
+[style*="transform"],
+[style*="opacity"] {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.15s ease;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

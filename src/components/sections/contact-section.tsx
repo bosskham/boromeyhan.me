@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Github, Mail, Send, CheckCircle } from "lucide-react";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { headingVariants, itemVariants } from "@/lib/animation-variants";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -39,22 +41,16 @@ export function ContactSection() {
   return (
     <section id="contact" className="scroll-mt-20 py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+        <ScrollReveal className="mx-auto max-w-2xl text-center">
+          <motion.h2 variants={headingVariants} className="text-3xl font-bold tracking-tight sm:text-4xl">
             Get in Touch
-          </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
+          </motion.h2>
+          <motion.p variants={itemVariants} className="mt-4 text-lg text-muted-foreground">
             Have a question or want to work together? Feel free to reach out.
-          </p>
-        </div>
+          </motion.p>
+        </ScrollReveal>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-          className="mx-auto mt-16 grid max-w-4xl gap-8 md:grid-cols-[1fr_2fr]"
-        >
+        <ScrollReveal className="mx-auto mt-16 grid max-w-4xl gap-8 md:grid-cols-[1fr_2fr]">
           <div className="space-y-6">
             <div>
               <h3 className="font-semibold">Contact Info</h3>
@@ -150,7 +146,7 @@ export function ContactSection() {
               )}
             </CardContent>
           </Card>
-        </motion.div>
+        </ScrollReveal>
       </div>
     </section>
   );
