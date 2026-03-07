@@ -87,4 +87,15 @@ export const projects: Project[] = [
     links: {},
     featured: false,
   },
+  {
+    title: "Ongdu Solver",
+    description:
+      "Mobile app for solving the Cambodian card game Ongdu. Picks 6 cards and instantly finds the optimal split into two rows, maximizing multipliers while avoiding foul hands (Sabsuch). Shows Recommended, Aggressive, and Balanced strategies in a swipeable carousel.",
+    tags: ["React Native", "Expo", "Android", "Game Logic"],
+    category: "side-project",
+    links: {
+      github: "https://github.com/bosskham/Ongdu-Solver",
+    },
+    featured: false,
+  },
 ];
