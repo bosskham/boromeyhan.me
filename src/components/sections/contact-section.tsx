@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Github, Mail, Send, CheckCircle } from "lucide-react";
+import { Github, Mail, MapPin, Phone, Send, CheckCircle } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { headingVariants, itemVariants } from "@/lib/animation-variants";
 import { Button } from "@/components/ui/button";
@@ -59,16 +59,34 @@ export function ContactSection() {
                   href={socialLinks.email}
                   className="flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  <Mail className="h-5 w-5 text-primary" />
+                  <Mail className="h-5 w-5 shrink-0 text-primary" />
                   contact@boromeyhan.me
                 </a>
+                <a
+                  href="mailto:khammy.han080388@gmail.com"
+                  className="flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  <Mail className="h-5 w-5 shrink-0 text-primary" />
+                  khammy.han080388@gmail.com
+                </a>
+                <a
+                  href="tel:+85589295515"
+                  className="flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  <Phone className="h-5 w-5 shrink-0 text-primary" />
+                  +855 89 295 515
+                </a>
+                <div className="flex items-start gap-3 text-sm text-muted-foreground">
+                  <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                  <span>Home No. 214, Street KS03, Borey Piphop Thmey Kour Srov 3, Sangkat Roluos, Khan Dangko, Phnom Penh, 12254</span>
+                </div>
                 <a
                   href={socialLinks.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  <Github className="h-5 w-5 text-primary" />
+                  <Github className="h-5 w-5 shrink-0 text-primary" />
                   github.com/bosskham
                 </a>
               </div>
