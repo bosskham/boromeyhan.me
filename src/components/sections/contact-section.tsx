@@ -78,7 +78,7 @@ export function ContactSection() {
                 </a>
                 <div className="flex items-start gap-3 text-sm text-muted-foreground">
                   <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
-                  <span>Home No. 214, Street KS03, Borey Piphop Thmey Kour Srov 3, Sangkat Roluos, Khan Dangko, Phnom Penh, 12254</span>
+                  <span>Home No. 8E1, Street No. 432, Sangkat Beong Trabek, Khan Chomkar Morn, Phnom Penh, 12254</span>
                 </div>
                 <a
                   href={socialLinks.github}
