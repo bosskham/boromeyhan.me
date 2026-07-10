@@ -2,27 +2,33 @@
 
 import { motion } from "framer-motion";
 import { Github, ExternalLink, Download } from "lucide-react";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { projects, type Project } from "@/data/projects";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import { cardVariants, headingVariants, itemVariants } from "@/lib/animation-variants";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { cardVariants } from "@/lib/animation-variants";
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({ project, featured = false }: { project: Project; featured?: boolean }) {
   const hasLinks = project.links.github || project.links.live || project.links.download;
 
   return (
-    <Card className="flex h-full flex-col border-border/50 bg-card/50 backdrop-blur-sm transition-colors hover:border-primary/30">
+    <SpotlightCard className="flex h-full flex-col">
       <CardHeader>
-        <CardTitle className="text-lg">{project.title}</CardTitle>
+        <CardTitle className={featured ? "font-display text-2xl" : "font-display text-lg"}>
+          {project.title}
+        </CardTitle>
       </CardHeader>
       <CardContent className="flex-1">
-        <p className="text-sm text-muted-foreground">{project.description}</p>
+        <p className={featured ? "text-base text-muted-foreground" : "text-sm text-muted-foreground"}>
+          {project.description}
+        </p>
         <div className="mt-4 flex flex-wrap gap-1.5">
           {project.tags.map((tag) => (
-            <Badge key={tag} variant="secondary" className="text-xs">
+            <Badge key={tag} variant="secondary" className="font-mono text-xs">
               {tag}
             </Badge>
           ))}
@@ -68,7 +74,7 @@ function ProjectCard({ project }: { project: Project }) {
           )}
         </CardFooter>
       )}
-    </Card>
+    </SpotlightCard>
   );
 }
 
@@ -79,22 +85,24 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="scroll-mt-20 py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <ScrollReveal className="mx-auto max-w-2xl text-center">
-          <motion.h2 variants={headingVariants} className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Projects
-          </motion.h2>
-          <motion.p variants={itemVariants} className="mt-4 text-lg text-muted-foreground">
-            A selection of projects I&apos;ve built — from full product
-            ecosystems to focused developer tools.
-          </motion.p>
+        <ScrollReveal className="mx-auto max-w-2xl">
+          <SectionHeading
+            align="center"
+            title="Projects"
+            description="A selection of projects I've built — from full product ecosystems to focused developer tools."
+          />
         </ScrollReveal>
 
         <div className="mt-16">
-          <h3 className="mb-6 text-xl font-semibold">Flagship</h3>
-          <ScrollReveal className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {flagship.map((project) => (
-              <motion.div key={project.title} variants={cardVariants} whileHover={{ y: -4, transition: { duration: 0.2 } }}>
-                <ProjectCard project={project} />
+          <h3 className="font-display mb-6 text-xl font-semibold">Flagship</h3>
+          <ScrollReveal className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2">
+            {flagship.map((project, i) => (
+              <motion.div
+                key={project.title}
+                variants={cardVariants}
+                className={i === 0 ? "sm:col-span-2 lg:col-span-2 lg:row-span-2" : ""}
+              >
+                <ProjectCard project={project} featured={i === 0} />
               </motion.div>
             ))}
           </ScrollReveal>
@@ -103,10 +111,10 @@ export function ProjectsSection() {
         <Separator className="my-12" />
 
         <div>
-          <h3 className="mb-6 text-xl font-semibold">Side Projects</h3>
+          <h3 className="font-display mb-6 text-xl font-semibold">Side Projects</h3>
           <ScrollReveal className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {sideProjects.map((project) => (
-              <motion.div key={project.title} variants={cardVariants} whileHover={{ y: -4, transition: { duration: 0.2 } }}>
+              <motion.div key={project.title} variants={cardVariants}>
                 <ProjectCard project={project} />
               </motion.div>
             ))}

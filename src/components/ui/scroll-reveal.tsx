@@ -13,7 +13,7 @@ interface ScrollRevealProps {
 
 export function ScrollReveal({ children, className, variants = containerVariants }: ScrollRevealProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { margin: "-80px" });
+  const isInView = useInView(ref, { margin: "-80px", once: true });
   const direction = useScrollDirection();
 
   return (

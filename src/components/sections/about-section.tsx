@@ -3,9 +3,9 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Monitor, Globe, Brain } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import { itemVariants, cardVariants, headingVariants } from "@/lib/animation-variants";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { itemVariants } from "@/lib/animation-variants";
 
 const highlights = [
   {
@@ -30,9 +30,7 @@ export function AboutSection() {
     <section id="about" className="scroll-mt-20 py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal className="mx-auto max-w-4xl">
-          <motion.h2 variants={headingVariants} className="text-3xl font-bold tracking-tight sm:text-4xl">
-            About Me
-          </motion.h2>
+          <SectionHeading title="About Me" />
           <div className="mt-8 flex flex-col items-center gap-8 md:flex-row md:items-start">
             <div className="shrink-0">
               <Image
@@ -65,20 +63,22 @@ export function AboutSection() {
           </div>
         </ScrollReveal>
 
-        <ScrollReveal className="mt-16 grid gap-6 sm:grid-cols-3">
+        <ScrollReveal className="mx-auto mt-16 max-w-4xl divide-y divide-border border-y border-border">
           {highlights.map((item) => (
-            <motion.div key={item.title} variants={cardVariants} whileHover={{ y: -4, transition: { duration: 0.2 } }}>
-              <Card className="h-full border-border/50 bg-card/50 backdrop-blur-sm transition-colors hover:border-primary/30">
-                <CardContent className="pt-6">
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                    <item.icon className="h-5 w-5 text-primary" />
-                  </div>
-                  <h3 className="font-semibold">{item.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    {item.description}
-                  </p>
-                </CardContent>
-              </Card>
+            <motion.div
+              key={item.title}
+              variants={itemVariants}
+              className="group flex items-start gap-6 py-6 pl-4 -ml-4 transition-colors hover:bg-accent/40"
+            >
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center border border-border text-primary transition-colors group-hover:border-primary">
+                <item.icon className="h-5 w-5" />
+              </div>
+              <div>
+                <h3 className="font-display font-semibold">{item.title}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {item.description}
+                </p>
+              </div>
             </motion.div>
           ))}
         </ScrollReveal>

@@ -1,10 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Github, Mail, MapPin, Phone, Send, CheckCircle } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import { headingVariants, itemVariants } from "@/lib/animation-variants";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -22,10 +21,9 @@ export function ContactSection() {
     const data = new FormData(form);
 
     try {
-      const res = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         body: data,
-        headers: { Accept: "application/json" },
       });
       if (res.ok) {
         setStatus("success");
@@ -41,19 +39,18 @@ export function ContactSection() {
   return (
     <section id="contact" className="scroll-mt-20 py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <ScrollReveal className="mx-auto max-w-2xl text-center">
-          <motion.h2 variants={headingVariants} className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Get in Touch
-          </motion.h2>
-          <motion.p variants={itemVariants} className="mt-4 text-lg text-muted-foreground">
-            Have a question or want to work together? Feel free to reach out.
-          </motion.p>
+        <ScrollReveal className="mx-auto max-w-2xl">
+          <SectionHeading
+            align="center"
+            title="Get in Touch"
+            description="Have a question or want to work together? Feel free to reach out."
+          />
         </ScrollReveal>
 
         <ScrollReveal className="mx-auto mt-16 grid max-w-4xl gap-8 md:grid-cols-[1fr_2fr]">
           <div className="space-y-6">
             <div>
-              <h3 className="font-semibold">Contact Info</h3>
+              <h3 className="font-display font-semibold">Contact Info</h3>
               <div className="mt-4 space-y-3">
                 <a
                   href={socialLinks.email}
@@ -93,12 +90,12 @@ export function ContactSection() {
             </div>
           </div>
 
-          <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+          <Card className="border-border bg-card">
             <CardContent className="pt-6">
               {status === "success" ? (
                 <div className="flex flex-col items-center justify-center py-8 text-center">
                   <CheckCircle className="mb-4 h-12 w-12 text-primary" />
-                  <h3 className="text-lg font-semibold">Message Sent!</h3>
+                  <h3 className="font-display text-lg font-semibold">Message Sent!</h3>
                   <p className="mt-2 text-sm text-muted-foreground">
                     Thanks for reaching out. I&apos;ll get back to you soon.
                   </p>

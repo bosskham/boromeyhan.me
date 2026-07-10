@@ -14,14 +14,14 @@ export function Footer() {
               href={socialLinks.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground transition-colors hover:text-foreground"
+              className="rounded-full p-3 -m-3 text-muted-foreground transition-colors hover:text-foreground"
               aria-label="GitHub"
             >
               <Github className="h-5 w-5" />
             </a>
             <a
               href={socialLinks.email}
-              className="text-muted-foreground transition-colors hover:text-foreground"
+              className="rounded-full p-3 -m-3 text-muted-foreground transition-colors hover:text-foreground"
               aria-label="Email"
             >
               <Mail className="h-5 w-5" />
