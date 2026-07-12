@@ -37,7 +37,7 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="scroll-mt-20 py-20 sm:py-28">
+    <section id="contact" className="scroll-mt-16 py-20 sm:py-28 lg:scroll-mt-0">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal className="mx-auto max-w-2xl">
           <SectionHeading

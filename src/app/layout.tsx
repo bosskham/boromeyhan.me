@@ -1,27 +1,24 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
+import { Inter, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { MotionConfig } from "framer-motion";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Navbar } from "@/components/layout/navbar";
+import { Sidebar } from "@/components/layout/sidebar";
 import { Footer } from "@/components/layout/footer";
+import { CursorGlow } from "@/components/ui/cursor-glow";
+import { FloatingAvatar } from "@/components/ui/floating-avatar";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  weight: ["400", "500", "700"],
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-});
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -62,7 +59,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning data-darkreader-ignore>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} antialiased`}
+        className={`${inter.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"
@@ -76,8 +73,10 @@ export default function RootLayout({
             >
               Skip to main content
             </a>
-            <div className="flex min-h-screen flex-col">
-              <Navbar />
+            <CursorGlow />
+            <Sidebar />
+            <FloatingAvatar />
+            <div className="flex min-h-screen flex-col lg:pl-[26rem]">
               <main id="main-content" className="flex-1">{children}</main>
               <Footer />
             </div>

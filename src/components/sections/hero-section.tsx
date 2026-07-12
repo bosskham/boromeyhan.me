@@ -1,7 +1,6 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowDown, Github, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Magnetic } from "@/components/ui/magnetic";
@@ -11,37 +10,8 @@ import { charContainerVariants, charVariants } from "@/lib/animation-variants";
 const NAME = "Boromey Han";
 
 export function HeroSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
-  const gridY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
-
   return (
-    <section ref={sectionRef} className="relative overflow-hidden py-24 sm:py-36">
-      {/* Aurora background */}
-      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="animate-aurora-a absolute left-[10%] top-[-10%] h-[420px] w-[420px] rounded-full bg-primary/20 blur-[110px]" />
-        <div className="animate-aurora-b absolute right-[5%] top-[10%] h-[380px] w-[380px] rounded-full bg-[oklch(0.55_0.15_250)]/10 blur-[110px]" />
-      </div>
-
-      {/* Tech grid background, subtle parallax */}
-      <motion.div
-        style={{ y: gridY }}
-        className="pointer-events-none absolute inset-0 -z-10"
-      >
-        <div
-          className="absolute inset-0 opacity-[0.05]"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,var(--background)_75%)]" />
-      </motion.div>
-
+    <section id="home" className="relative flex scroll-mt-16 items-center py-20 sm:py-28 lg:scroll-mt-0">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl">
           <motion.span
@@ -60,15 +30,20 @@ export function HeroSection() {
             className="font-display mt-4 text-6xl font-bold leading-[0.95] tracking-tight sm:text-7xl lg:text-8xl"
             aria-label={NAME}
           >
-            {NAME.split("").map((char, i) => (
-              <motion.span
-                key={i}
-                variants={charVariants}
-                className="inline-block"
-                aria-hidden="true"
-              >
-                {char === " " ? " " : char}
-              </motion.span>
+            {NAME.split(" ").map((word, wi) => (
+              <span key={wi} className="inline-block whitespace-nowrap">
+                {word.split("").map((char, ci) => (
+                  <motion.span
+                    key={ci}
+                    variants={charVariants}
+                    className="inline-block"
+                    aria-hidden="true"
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+                {wi < NAME.split(" ").length - 1 ? " " : null}
+              </span>
             ))}
           </motion.h1>
 

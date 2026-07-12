@@ -83,7 +83,7 @@ export function ProjectsSection() {
   const sideProjects = projects.filter((p) => p.category === "side-project");
 
   return (
-    <section id="projects" className="scroll-mt-20 py-20 sm:py-28">
+    <section id="projects" className="scroll-mt-16 py-20 sm:py-28 lg:scroll-mt-0">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal className="mx-auto max-w-2xl">
           <SectionHeading
