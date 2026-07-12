@@ -7,7 +7,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Sidebar } from "@/components/layout/sidebar";
 import { Footer } from "@/components/layout/footer";
 import { CursorGlow } from "@/components/ui/cursor-glow";
-import { FloatingAvatar } from "@/components/ui/floating-avatar";
 import "./globals.css";
 
 const inter = Inter({
@@ -75,7 +74,6 @@ export default function RootLayout({
             </a>
             <CursorGlow />
             <Sidebar />
-            <FloatingAvatar />
             <div className="flex min-h-screen flex-col lg:pl-[26rem]">
               <main id="main-content" className="flex-1">{children}</main>
               <Footer />
